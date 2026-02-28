@@ -13,7 +13,7 @@ class Builder extends \Illuminate\Database\Schema\PostgresBuilder
      */
     public function createBlueprint($table, Closure $callback = null)
     {
-        return new Blueprint($table, $callback);
+        return new Blueprint($this->connection, $table, $callback);
     }
 
     /**

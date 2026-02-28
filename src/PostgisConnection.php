@@ -14,7 +14,7 @@ class PostgisConnection extends PostgresConnection
      */
     protected function getDefaultSchemaGrammar()
     {
-        return $this->withTablePrefix(new PostgisGrammar());
+        return new PostgisGrammar($this);
     }
 
 
