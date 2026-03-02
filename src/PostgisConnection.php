@@ -14,7 +14,11 @@ class PostgisConnection extends PostgresConnection
      */
     protected function getDefaultSchemaGrammar()
     {
-        return new PostgisGrammar($this);
+        if (version_compare(\Illuminate\Foundation\Application::VERSION, '12.0.0', '>=')) {
+            return new PostgisGrammar($this);
+        }
+
+        return $this->withTablePrefix(new PostgisGrammar());
     }
 
 
